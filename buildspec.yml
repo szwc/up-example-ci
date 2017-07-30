@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install
+      - sudo shown -R $(whoami) /usr/local/bin
+      - curl -sL $UP_BIN > /usr/local/bin/up
+      - curl -sL $UP_PROXY_BIN > /tmp/up-proxy
+      - chmod +x /tmp/up-proxy
+      - chmod +x /usr/local/bin/up
+  build:
+    commands:
+      - npm test
+      - up
